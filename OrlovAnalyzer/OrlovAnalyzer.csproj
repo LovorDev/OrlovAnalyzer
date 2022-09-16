@@ -48,6 +48,7 @@
         <Compile Include="SimpleYoYoAnalyzer.cs"/>
         <Compile Include="AnalyzerPackage.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="SimpleYoYoCodeFixProvider.cs"/>
     </ItemGroup>
     <ItemGroup>
         <None Include="source.extension.vsixmanifest">

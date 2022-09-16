@@ -11,13 +11,13 @@ namespace OrlovAnalyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class SimpleYoYoAnalyzer : DiagnosticAnalyzer
     {
+        public const string Id = "YoYoProblem";
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Diagnostic);
-        private const string Id = "Yo-Yo problem";
         private const string Title = "Simple Yo-Yo problem analyzer";
-        private const string Description = "Method declaration above invocation";
+        private const string Description = "Method declaration above method invocation";
         private const string Category = "Antipattern";
 
-        private const DiagnosticSeverity Severity = DiagnosticSeverity.Hidden;
+        private const DiagnosticSeverity Severity = DiagnosticSeverity.Info;
 
         private DiagnosticDescriptor Diagnostic =>
             _mDiagnostic = _mDiagnostic ?? new DiagnosticDescriptor(Id, Title, Description, Category, Severity, true);
