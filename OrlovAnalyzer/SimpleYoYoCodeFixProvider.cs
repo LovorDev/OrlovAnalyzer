@@ -26,15 +26,19 @@ namespace OrlovAnalyzer
 
             var node = root.FindNode(diagnostic.Location.SourceSpan);
 
-            if (!(node is InvocationExpressionSyntax invocationExpressionSyntax))
+            if (!(node is InvocationExpressionSyntax addInvocation))
             {
-                throw new Exception("Expected node of Method Invocation");
+                throw new Exception("Expected node to be of type InvocationExpressionSyntax");
             }
 
-            context.RegisterCodeFix(CodeAction.Create("Move method declaration", async c =>
+            context.RegisterCodeFix(CodeAction.Create("Move method declaration", _ =>
             {
-                var newRoot = root.RemoveNode(invocationExpressionSyntax, SyntaxRemoveOptions.AddElasticMarker);
-                return doc.WithSyntaxRoot(newRoot);
+                var (method, correctMethod) = ClassSyntax.GetMethodInClass(addInvocation);
+
+                var newRoot = root.InsertNodesAfter(method, new[] { correctMethod });
+                newRoot = newRoot.RemoveNode(newRoot.FindNode(correctMethod.Span), SyntaxRemoveOptions.KeepEndOfLine);
+
+                return Task.FromResult(doc.WithSyntaxRoot(newRoot));
             }), diagnostic);
         }
     }

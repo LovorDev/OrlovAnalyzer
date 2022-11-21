@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Linq;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -37,34 +36,13 @@ namespace OrlovAnalyzer
         {
             var invocationMethod = (InvocationExpressionSyntax)ctx.Node;
 
-            MethodDeclarationSyntax method = null;
-            switch (invocationMethod.Parent)
-            {
-                case null:
-                    break;
-                case ExpressionStatementSyntax expressionStatementSyntax:
-                    method = (MethodDeclarationSyntax)((BlockSyntax)expressionStatementSyntax.Parent).Parent;
-                    break;
-                case BlockSyntax blockSyntax:
-                    method = (MethodDeclarationSyntax)blockSyntax.Parent;
-                    break;
-                case MethodDeclarationSyntax methodDeclarationSyntax:
-                    method = methodDeclarationSyntax;
-                    break;
-            }
-
-            if (method is null)
+            var (method, correctMethod) = ClassSyntax.GetMethodInClass(invocationMethod);
+            if (method is null || correctMethod is null)
             {
                 return;
             }
 
-            var allClassMethods = ((ClassDeclarationSyntax)method.Parent).Members.OfType<MethodDeclarationSyntax>();
-
-            var correctMethod = allClassMethods.FirstOrDefault(x =>
-                x.Identifier.Text ==
-                (invocationMethod.Expression is IdentifierNameSyntax ins ? ins.Identifier.Text : ""));
-
-            if (correctMethod != null && correctMethod.SpanStart < method.SpanStart)
+            if (correctMethod.SpanStart < method.SpanStart)
             {
                 ctx.ReportDiagnostic(Microsoft.CodeAnalysis.Diagnostic.Create(Diagnostic, ctx.Node.GetLocation()));
             }
