@@ -14,8 +14,8 @@
     <ProjectGuid>{69E2A65D-EB0D-4D11-9ABD-608745B1ECD8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrlovAnalyzer</RootNamespace>
-    <AssemblyName>OrlovAnalyzer</AssemblyName>
+    <RootNamespace>OrlovAnalyzerVSIXs</RootNamespace>
+    <AssemblyName>OrlovAnalyzerVSIX</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -71,11 +71,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnalyzerProject\OrlovAnalyzer.csproj">
-      <Project>{922123B9-8679-4469-B960-7E1F52B5DA13}</Project>
+    <ProjectReference Include="..\OrlovAnalyzer\OrlovAnalyzer.csproj">
+      <Project>{922123b9-8679-4469-b960-7e1f52b5da13}</Project>
       <Name>OrlovAnalyzer</Name>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
