@@ -2,7 +2,7 @@ using System.Linq;
 
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace OrlovAnalyzer
+namespace OrlovAnalyzer.SimpleYOYOAnalyzer
 {
     public static class ClassSyntax
     {

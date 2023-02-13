@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="OrlovAnalyzer.6afaa1c9-90e8-47ac-9a42-c31cc1a8d69e" Version="1.0" Language="en-US" Publisher="Василий Орлов" />
-        <DisplayName>OrlovAnalyzer</DisplayName>
+        <DisplayName>OrlovAnalyzer.VSIX</DisplayName>
         <Description>Empty VSIX Project.</Description>
     </Metadata>
     <Installation>
