@@ -12,3 +12,10 @@ When you have a large class with many methods, if you don't order them in the or
 The IDE tells you where you use a method that is defined above its call and can swap between these methods 
 
 ![](https://i.imgur.com/XhoL6u5.gif)
+
+## Getting started
+
+Just downoald package from [release](https://github.com/LovorDev/OrlovAnalyzer/releases) and import in your project
+
+## By the way
+About all bugs, issues or defects you can write to me or create your own requests
