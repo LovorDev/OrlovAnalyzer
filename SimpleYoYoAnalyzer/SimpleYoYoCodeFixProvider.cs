@@ -36,7 +36,7 @@ namespace OrlovAnalyzer.SimpleYOYOAnalyzer
                 var (method, correctMethod) = ClassSyntax.GetMethodInClass(addInvocation);
 
                 var newRoot = root.InsertNodesAfter(method, new[] { correctMethod });
-                newRoot = newRoot.RemoveNode(newRoot.FindNode(correctMethod.Span), SyntaxRemoveOptions.KeepEndOfLine);
+                newRoot = newRoot.RemoveNode(newRoot.FindNode(correctMethod.Span), SyntaxRemoveOptions.KeepNoTrivia);
 
                 return Task.FromResult(doc.WithSyntaxRoot(newRoot));
             }), diagnostic);

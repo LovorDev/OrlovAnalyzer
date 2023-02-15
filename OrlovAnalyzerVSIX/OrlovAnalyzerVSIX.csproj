@@ -71,7 +71,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrlovAnalyzer\OrlovAnalyzer.csproj">
+    <ProjectReference Include="..\SimpleYoYoAnalyzer\OrlovAnalyzer.csproj">
       <Project>{922123b9-8679-4469-b960-7e1f52b5da13}</Project>
       <Name>OrlovAnalyzer</Name>
     </ProjectReference>
